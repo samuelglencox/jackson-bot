@@ -1,0 +1,23 @@
+{
+  "name": "jackson-bot",
+  "version": "1.0.0",
+  "description": "A Discord Bot built in NodeJS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samuelglencox/jackson-bot.git"
+  },
+  "author": "Samuel Cox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samuelglencox/jackson-bot/issues"
+  },
+  "homepage": "https://github.com/samuelglencox/jackson-bot#readme",
+  "dependencies": {
+    "dot-env": "^0.0.1"
+  }
+}
