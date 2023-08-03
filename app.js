@@ -1,6 +1,7 @@
 require('dotenv/config');
 
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const mongoose = require('mongoose');
 
 const fs = require('node:fs');
 const path = require('node:path');
@@ -8,6 +9,20 @@ const path = require('node:path');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 const initialize = async () => {
+
+	await mongoose
+		.connect(process.env.DATABASE_URI, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+		})
+		.then(() => {
+			console.log('Connected to the Database');
+		})
+		.catch((error) => {
+			console.log(error);
+			process.exit(1);
+		});
+
 	client.commands = new Collection();
 
 	const commandsPath = path.join(__dirname, 'commands');

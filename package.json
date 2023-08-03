@@ -20,7 +20,8 @@
   "homepage": "https://github.com/samuelglencox/jackson-bot#readme",
   "dependencies": {
     "discord.js": "^14.12.1",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "mongoose": "^7.4.1"
   },
   "devDependencies": {
     "eslint": "^8.46.0"
