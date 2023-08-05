@@ -17,7 +17,7 @@ module.exports = {
 					quote: interaction.options.getString('add'),
 				});
 
-				newQuote.save()
+				newQuote.save();
 				message = `${interaction.user} has added the following Jacksonism: ` + newQuote.quote;
 				await interaction.reply(message);
 			}

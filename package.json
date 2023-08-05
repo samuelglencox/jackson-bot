@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/samuelglencox/jackson-bot#readme",
   "dependencies": {
+    "axios": "^1.4.0",
     "discord.js": "^14.12.1",
     "dotenv": "^16.3.1",
     "mongoose": "^7.4.1"
