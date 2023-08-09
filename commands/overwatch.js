@@ -1,4 +1,4 @@
-import 'dotenv/config';
+require('dotenv/config');
 const { SlashCommandBuilder, Client, Guild } = require('discord.js');
 
 let toggle = false;
