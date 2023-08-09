@@ -1,12 +1,16 @@
 require('dotenv/config');
 
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, Options } = require('discord.js');
 const mongoose = require('mongoose');
 
 const fs = require('node:fs');
 const path = require('node:path');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ 
+	intents: [GatewayIntentBits.Guilds],
+	makeCache: Options.cacheWithLimits(Options.DefaultMakeCacheSettings),
+	sweepers: Options.DefaultSweeperSettings,
+});
 
 const initialize = async () => {
 
@@ -48,10 +52,10 @@ const initialize = async () => {
 		const filePath = path.join(eventsPath, file);
 		const event = require(filePath);
 		if (event.once) {
-			client.once(event.name, (...args) => event.execute(...args));
+			client.once(event.name, (...args) => event.execute(client, ...args));
 		}
 		else {
-			client.on(event.name, (...args) => event.execute(...args));
+			client.on(event.name, (...args) => event.execute(client, ...args));
 		}
 	}
 
