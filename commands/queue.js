@@ -43,7 +43,7 @@ module.exports = {
 			option.setName('enable')
 				.setDescription('Enable/Disable bot'),
 		),
-	async execute(client, interaction) {
+	async execute(interaction, client) {
 
 		channel = await client.channels.fetch(process.env.PING_CHANNEL);
 
