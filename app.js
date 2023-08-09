@@ -62,4 +62,18 @@ const initialize = async () => {
 	client.login(process.env.CLIENT_TOKEN);
 };
 
+process.on('SIGTERM', async () => {
+	console.log('Shutting down');
+	await mongoose.disconnect();
+	process.exit(0);
+});
+
+process.on('uncaughtException', (error) => {
+	console.log(error);
+});
+
+process.on('unhandledRejection', (error) => {
+	console.log(error);
+});
+
 initialize();
