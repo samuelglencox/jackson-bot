@@ -17,16 +17,14 @@ module.exports = {
 					quote: interaction.options.getString('add'),
 				});
 
-				newQuote.save();
+				await newQuote.save();
 				message = `${interaction.user} has added the following Jacksonism: ` + newQuote.quote;
-				await interaction.reply(message);
+				interaction.reply(message);
 			}
 			else {
-				await Jacksonism.aggregate([ { $sample: { size: 1 } } ])
-					.then(result => {
-						message = result[0].quote;
-						interaction.reply(message);
-					});
+				const randomQuote = await Jacksonism.aggregate([ { $sample: { size: 1 } } ]);
+				message = randomQuote[0].quote;
+				interaction.reply(message);
 			}
 		}
 		catch (error) {

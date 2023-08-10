@@ -6,7 +6,7 @@ let delay;
 let intervalTime;
 let channel;
 
- const users = ['1', '2', '3'];
+const users = ['1', '2', '3'];
 
 const pingUser = async () => {
 	const user = users[
@@ -19,12 +19,11 @@ const pingUser = async () => {
 const setIntervalTime = (min, max) => {
 	const variance = Math.random() * (max - min) + min;
 	const dynamicDelay = 1000 * 60 * 60 * (24 + variance);
-	console.log(dynamicDelay);
+
 	return dynamicDelay;
 };
 
 const pingDelay = () => {
-
 	clearTimeout(delay);
 
 	if (toggle) {
@@ -32,7 +31,6 @@ const pingDelay = () => {
 		intervalTime = setIntervalTime(0, 48);
 		delay = setTimeout(pingDelay, intervalTime);
 	}
-
 };
 
 module.exports = {
@@ -44,9 +42,7 @@ module.exports = {
 				.setDescription('Enable/Disable bot'),
 		),
 	async execute(interaction, client) {
-
 		channel = await client.channels.fetch(process.env.PING_CHANNEL);
-
 		toggle = interaction.options.getBoolean('enable');
 
 		if (toggle == true) {
